@@ -23,6 +23,7 @@ Route::prefix('superadmin')->name('superadmin.')->group(function () {
         Route::post('profile/update', [SuperAdminProfileController::class, 'update'])->name('profile.update');
         Route::post('profile/password', [SuperAdminProfileController::class, 'updatePassword'])->name('password.update');
 
+        Route::get('/tenant/{tenantId}/dashboard', [TenantController::class, 'dashboard'])->name('tenant.dashboard');
         Route::post('/tenants/{tenant}/approve', [TenantController::class, 'approve'])->name('tenants.approve');
         Route::get('/accept-tenant/{tenant_id}', [TenantController::class, 'acceptTenant'])->name('acceptTenant');
     });

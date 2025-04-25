@@ -23,15 +23,11 @@ class SuperAdminController extends Controller
     // ✅ Show SuperAdmin dashboard
     public function dashboard()
     {
-        $admins = User::where('role', 'admin')
-                      ->whereNotNull('tenant_id')
-                      ->get();
-
-        // Fetching tenants
-        $tenants = Tenant::all();  // Assuming you want to list all tenants
-
-        return view('superadmin.dashboard', compact('admins', 'tenants'));
+        $admins = Admin::with('tenant')->get(); // Load tenants with admins
+        return view('superadmin.dashboard', compact('admins'));
     }
+    
+
 
     // ✅ Accept a tenant and create its database
     public function acceptTenant($id)

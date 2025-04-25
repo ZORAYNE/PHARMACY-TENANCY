@@ -36,6 +36,9 @@ use App\Models\Admin;
 // In your routes/web.php
 use App\Http\Controllers\Auth\RegisteredUserController;
 
+Route::get('/tenant/{tenantId}/dashboard', [TenantController::class, 'dashboard'])->name('tenant.dashboard');
+
+
 Route::get('/register', [RegisteredUserController::class, 'showRegistrationForm'])->name('register.form');
 Route::post('/register', [RegisteredUserController::class, 'register'])->name('register');
 

@@ -86,3 +86,5 @@ Route::middleware([
         Route::get('/reports/sales', [ReportController::class, 'salesReport'])->name('reports.sales');
     });
 });
+
+Route::get('/tenant/{tenantId}/dashboard', [TenantController::class, 'dashboard'])->name('tenant.dashboard');
