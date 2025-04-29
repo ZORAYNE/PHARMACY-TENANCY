@@ -12,20 +12,15 @@ use App\Mail\TenantApprovedMail;
 
 class SuperAdminController extends Controller
 {
-    public function index()
+    // ✅ Show SuperAdmin dashboard
+    public function dashboard()
 {
-    $tenants = Tenant::with('admins')->get();
+    $tenants = Tenant::with('admins')->get(); // <-- this is missing
     $admins = Admin::with('tenant')->get();
 
     return view('superadmin.dashboard', compact('tenants', 'admins'));
 }
 
-    // ✅ Show SuperAdmin dashboard
-    public function dashboard()
-    {
-        $admins = Admin::with('tenant')->get(); // Load tenants with admins
-        return view('superadmin.dashboard', compact('admins'));
-    }
     
 
 
